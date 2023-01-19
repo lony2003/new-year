@@ -35,7 +35,7 @@ body {
 .information-container {
     @apply absolute w-full h-full text-black;
     background-color: #ffffffa6;
-    z-index: 60;
+    z-index: 600;
 }
 
 .information {
@@ -173,7 +173,7 @@ body {
     position: fixed;
     top: 40px;
     right: 150px;
-    z-index: 9999;
+    z-index: 500;
     pointer-events: none;
 }
 
@@ -181,7 +181,7 @@ body {
     position: fixed;
     top: 30px;
     right: 10px;
-    z-index: 9999;
+    z-index: 500;
     pointer-events: none
 }
 
@@ -189,7 +189,7 @@ body {
     position: fixed;
     top: 40px;
     left: 150px;
-    z-index: 9999;
+    z-index: 500;
     pointer-events: none
 }
 
@@ -197,7 +197,7 @@ body {
     position: fixed;
     top: 30px;
     left: 10px;
-    z-index: 9999;
+    z-index: 500;
     pointer-events: none
 }
 
