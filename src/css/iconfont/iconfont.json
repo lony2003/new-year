@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4114112",
+      "name": "next",
+      "font_class": "next",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    },
+    {
+      "icon_id": "4765727",
+      "name": "info-circle",
+      "font_class": "info-circle",
+      "unicode": "e77e",
+      "unicode_decimal": 59262
+    }
+  ]
+}
