@@ -9,14 +9,6 @@
             overflow: hidden;
         }
 
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
-
         .loading {
             background: firebrick;
             position: absolute;
@@ -189,9 +181,7 @@
 
 <section class="step-back">
     <button class="step-back-information" onclick="openInformation()">
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-info-circle"></use>
-        </svg>
+        <span class="iconfont icon-info-circle"></span>
     </button>
 </section>
 
@@ -207,9 +197,7 @@
         世界最美的风景，都不及回家的路。故乡的月分外明，归家的心急似箭，旅途的车极速跑，家中的人格外亲。家中的一切最诱人，合家团圆最兴奋。春节归家心切，愿你一路顺风，事事顺心。
     </p>
     <button class="step-button" onclick="fromStep2To3()">
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-next"></use>
-        </svg>
+        <span class="iconfont icon-next" style="font-size: 42px"></span>
     </button>
 </section>
 
@@ -219,9 +207,7 @@
         一扫，扫去尘埃，窗明几净；二扫，扫去抑郁，豁然开朗；三扫，扫去宿怨，友好相拥；四扫，扫去迷茫，前途光明；五扫……还扫，无扫！亲爱的你，扫尘日，扫去小不快，迎接新未来！生活要加油哦！
     </p>
     <button class="step-button" onclick="fromStep3To4()">
-        <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-next"></use>
-        </svg>
+        <span class="iconfont icon-next" style="font-size: 42px"></span>
     </button>
 </section>
 
@@ -230,15 +216,93 @@
         此时此刻，华灯初上，万家团圆。新年将至，惟愿山河锦绣、国泰民安。惟愿和顺致祥、幸福美满
     </p>
 </section>
+
+<section class="step-img step-img-return-container" style="display: none">
+    <img class="step-img-return step-img-return-p1" src="img/return-home-people1.png">
+    <img class="step-img-return step-img-return-p3" src="img/return-home-people3.png">
+    <img class="step-img-return step-img-return-t" src="img/return-home-train.png">
+</section>
+
+<section class="step-img step-img-cleaning-container" style="display: none">
+    <img class="step-img-cleaning step-img-cleaning-win" src="img/cleaning-window.png">
+    <img class="step-img-cleaning step-img-cleaning-sofa" src="img/cleaning-sofa.png">
+    <img class="step-img-cleaning step-img-cleaning-mach" src="img/cleaning-machine.png">
+</section>
+
+<section class="step-img step-img-dinner-container" style="display: none">
+    <div class="deng-box2">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">年</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+    <div class="deng-box3">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">新</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+    <div class="deng-box1">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">乐</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+    <div class="deng-box">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">快</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+    <div class="step-img-dinner">
+        <img src="img/dinner.png">
+    </div>
+</section>
+
 <section class="information-container" style="display: none;">
     <section class="information">
-        <button class="step-back-information" style="margin: 8px" onclick="closeInformation()"></button>
+        <button class="step-back-information" style="margin: 8px; color: black;" onclick="closeInformation()">
+            <span class="iconfont icon-close"></span>
+        </button>
         <strong class="information-title">页面说明</strong>
         <p class="information-content">大家好，这里是放课后的下午茶时间！</p>
         <p class="information-content">
-            这个网页是为了参加一个学校的活动设计的页面，我觉得应该是切了“新年新气象”的题，嘛反正不切题我也没办法重做了就是了<br/>
-            这个页面同时也是一个以技术验证为目的的实验性网页。放课后的主页有好几年都是空着的，虽然我感觉我们的404页面也挺好看的，不过果然还是要有一个主页才行呐。<br/>
-            这个页面使用了typescript+three.js+webpack+tailwindcss,基本验证了我将在主页上使用的所有技术栈，虽然没有使用vue就是了（不使用vue是因为这个网页有点小，不至于上vue）。<br/>
+            这个网页是为了参加一个学校的活动设计的页面，我觉得应该是切了“新年新气象”的题，嘛反正不切题我也没办法重做了就是了<br/><br/>
+            这个页面同时也是一个以技术验证为目的的实验性网页。放课后的主页有好几年都是空着的，虽然我感觉我们的404页面也挺好看的，不过果然还是要有一个主页才行呐。<br/><br/>
+            这个页面使用了typescript+three.js+webpack+tailwindcss,基本验证了我将在主页上使用的所有技术栈，虽然没有使用vue就是了（不使用vue是因为这个网页有点小，不至于上vue）。<br/><br/>
+            说实话实在是想不到用什么背景好了，没办法只好保留黑色的背景了。。。。。。。。<br/><br/>
             那么，技术验证完成后，放课后的主页也将开始动工啦！随时欢迎大家打开放课后的<a
                 href="https://www.fangkehou.eu.org">主页</a>查看新主页是否上线哦！
         </p>

@@ -3,12 +3,15 @@ import { CustomEase } from 'gsap/all';
 import ThreeScene from "./threeScene";
 import '../css/main.scss'
 import '../css/iconfont/iconfont.css'
-import './iconfont'
+import THREE = require('three');
 
 gsap.registerPlugin(CustomEase);
 CustomEase.create("anim-sfs", "M0,0 C0.598,0 0.4,1 1,1 ");
 
-const scene = new ThreeScene('sbc');
+const scene = new ThreeScene();
+
+global.scene = scene;
+global.updateScene = 1;
 
 (function() {
 
@@ -69,12 +72,32 @@ const scene = new ThreeScene('sbc');
             display: "none",
         }))
 
+        timeline.add(gsap.to(scene.camera.position, {
+            x: -875.72,
+            y: 455.67,
+            z: 333.68,
+            duration: 0.5,
+            ease: "anim-sfs"
+        }))
+
+        timeline.add(gsap.to(scene.camera, {
+            zoom: 0.8,
+            duration: 0.5,
+            ease: "anim-sfs"
+        }), '<')
+
+        timeline.add(gsap.to(document.querySelector(".step-img-return-container"), {
+            duration: 0,
+            opacity: 0,
+            display: "block",
+        }))
+
         timeline.add(gsap.to(document.querySelector(".step-2"), {
             duration: 0,
             display: "flex",
         }))
 
-        timeline.to(document.querySelector(".step-2"), {
+        timeline.to([document.querySelector(".step-2"), document.querySelector(".step-img-return-container")], {
             duration: 0.5,
             opacity: 1,
             ease: "power1.out"
@@ -89,6 +112,11 @@ const scene = new ThreeScene('sbc');
             display: "flex",
         }))
 
+        timeline.add(gsap.to(document.querySelector(".step-img-return-container"), {
+            duration: 0.5,
+            opacity: 0,
+        }))
+
         timeline.add(gsap.to([document.querySelector(".step-2"), document.querySelector(".step-3")],{
             duration: 0.8,
             right: 0,
@@ -98,7 +126,26 @@ const scene = new ThreeScene('sbc');
             ease: "anim-sfs"
         }))
 
-        timeline.add(gsap.to(document.querySelector(".step-2"), {
+        timeline.add(gsap.to(scene.camera.position, {
+            x: -233.23,
+            y: 473.58,
+            z: 949.23,
+            duration: 0.8,
+            ease: "anim-sfs"
+        }), '<')
+
+        timeline.add(gsap.to(document.querySelector(".step-img-cleaning-container"), {
+            duration: 0,
+            display: 'block',
+            opacity: 0
+        }))
+
+        timeline.add(gsap.to(document.querySelector(".step-img-cleaning-container"), {
+            duration: 0.5,
+            opacity: 1
+        }))
+
+        timeline.add(gsap.to([document.querySelector(".step-2"), document.querySelector(".step-img-return-container")], {
             duration: 0,
             display: "none"
         }))
@@ -107,9 +154,28 @@ const scene = new ThreeScene('sbc');
     function fromStep3To4(): void {
         const timeline = gsap.timeline();
 
-        timeline.add(gsap.to(document.querySelector(".step-3"), {
+        timeline.add(gsap.to([document.querySelector(".step-3"), document.querySelector(".step-img-cleaning-container")], {
             duration: 0.3,
             opacity: 0
+        }))
+
+        timeline.add(gsap.to(scene.camera.position, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 0.8,
+            ease: "anim-sfs"
+        }))
+
+        timeline.add(gsap.to(scene.camera, {
+            zoom: 3,
+            duration: 0.8,
+            ease: "anim-sfs"
+        }), '<')
+
+        timeline.add(gsap.to(global, {
+            updateScene: 0,
+            duration: 0,
         }))
 
         timeline.add(gsap.to(document.querySelector(".step-4"), {
@@ -118,7 +184,24 @@ const scene = new ThreeScene('sbc');
         }))
 
         timeline.add(gsap.to(document.querySelector(".step-4"), {
-            duration: 0.3,
+            duration: 0.6,
+            opacity: 1
+        }))
+
+        timeline.add(gsap.to(document.querySelector(".step-4"), {
+            delay: 0.7,
+            duration: 0.6,
+            opacity: 0
+        }))
+
+        timeline.add(gsap.to(document.querySelector(".step-img-dinner-container"), {
+            duration: 0,
+            display: 'block',
+            opacity: 0
+        }))
+
+        timeline.add(gsap.to(document.querySelector(".step-img-dinner-container"), {
+            duration: 0.6,
             opacity: 1
         }))
     }
@@ -157,10 +240,16 @@ const scene = new ThreeScene('sbc');
             display: 'none'
         }))
     }
-    
-    function blockPosition(step: number): void {
-    
+
+    function animate() {
+        if (global.updateScene == 1) {
+            scene.camera.updateProjectionMatrix();
+            scene.renderer.render(scene.scene, scene.camera);
+        }
+        // controls.update();
+        requestAnimationFrame(animate);
     }
+    animate();
 
     global.startStep1 = startStep1;
     global.fromStep1To2 = fromStep1To2;
@@ -168,6 +257,5 @@ const scene = new ThreeScene('sbc');
     global.fromStep3To4 = fromStep3To4;
     global.openInformation = openInformation;
     global.closeInformation = closeInformation;
-    global.blockPosition = blockPosition;
     
 }())
