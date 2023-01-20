@@ -1,9 +1,11 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/js/main.ts',
     output: {
         path: __dirname + '/dist',
@@ -30,6 +32,12 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[fullhash].css',
+        }),
+        new ImageminPlugin({
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            pngquant: {
+                quality: '65-80'
+            }
         }),
     ],
     module: {
@@ -63,4 +71,13 @@ module.exports = {
             },
         ]
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    compress: true
+                }
+            }),
+        ],
+    }
 }
