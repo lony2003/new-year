@@ -3,7 +3,6 @@ import { CustomEase } from 'gsap/all';
 import ThreeScene from "./threeScene";
 import '../css/main.scss'
 import '../css/iconfont/iconfont.css'
-import THREE = require('three');
 
 gsap.registerPlugin(CustomEase);
 CustomEase.create("anim-sfs", "M0,0 C0.598,0 0.4,1 1,1 ");
@@ -77,13 +76,22 @@ global.updateScene = 1;
             y: 455.67,
             z: 333.68,
             duration: 0.5,
-            ease: "anim-sfs"
+            // ease: "anim-sfs"
         }))
+
+        timeline.add(gsap.to(scene.camera.quaternion, {
+            x: scene.quaternion.x,
+            y: scene.quaternion.y,
+            z: scene.quaternion.z,
+            w: scene.quaternion.w,
+            duration: 0.5,
+            // ease: "anim-sfs"
+        }), '<')
 
         timeline.add(gsap.to(scene.camera, {
             zoom: 0.8,
             duration: 0.5,
-            ease: "anim-sfs"
+            // ease: "anim-sfs"
         }), '<')
 
         timeline.add(gsap.to(document.querySelector(".step-img-return-container"), {
@@ -163,15 +171,23 @@ global.updateScene = 1;
             x: 0,
             y: 0,
             z: 0,
-            duration: 0.8,
-            ease: "anim-sfs"
+            duration: 1,
+            // ease: "anim-sfs"
         }))
 
-        timeline.add(gsap.to(scene.camera, {
-            zoom: 3,
-            duration: 0.8,
+        timeline.add(gsap.to(scene.camera.quaternion, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 1,
             ease: "anim-sfs"
         }), '<')
+
+        timeline.add(gsap.to(scene.camera, {
+            zoom: 6,
+            duration: 1,
+            // ease: "anim-sfs"
+        }))
 
         timeline.add(gsap.to(global, {
             updateScene: 0,

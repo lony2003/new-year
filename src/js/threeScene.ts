@@ -7,14 +7,16 @@ export default class ThreeScene {
     scene: THREE.Scene;
 
     renderer: THREE.Renderer;
+
+    quaternion: THREE.Quaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(-0.67, -0.65, -0.45));
     constructor() {
 
         this.update = 1;
         // camera
         this.camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2,  -100000, 100000);
         let camera = this.camera;
-        camera.position.set(-502.09, 702.24, 504.78);
-        camera.quaternion.setFromEuler(new THREE.Euler(-0.67, -0.65, -0.45));
+        camera.position.set(0, 702.24, -353.68);
+        camera.quaternion.setFromEuler(new THREE.Euler(-1.57, 0, 0));
         camera.scale.set(1, 1, 1);
         camera.zoom = 0.35;
         camera.updateProjectionMatrix();
